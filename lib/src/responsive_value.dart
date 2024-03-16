@@ -41,15 +41,15 @@ class ResponsiveValue<T> {
       }
     }
 
-    List<Condition> conditions = [];
+    List<Condition<T>> conditions = [];
     conditions.addAll(conditionalValues);
     // Get visible value from active condition.
     value = (getValue(context, conditions) ?? defaultValue) as T;
   }
 
-  T? getValue(BuildContext context, List<Condition> conditions) {
+  T? getValue(BuildContext context, List<Condition<T>> conditions) {
     // Find the active condition.
-    Condition? activeCondition = getActiveCondition(context, conditions);
+    Condition<T>? activeCondition = getActiveCondition(context, conditions);
     if (activeCondition == null) return null;
     // Return landscape value if orientation is landscape and landscape override value is provided.
     if (ResponsiveBreakpoints.of(context).orientation ==
@@ -74,13 +74,13 @@ class ResponsiveValue<T> {
   ///   a. Named breakpoints.
   ///   b. Unnamed breakpoints.
   /// Returns null if no Active Condition is found.
-  Condition? getActiveCondition(
-      BuildContext context, List<Condition> conditions) {
+  Condition<T>? getActiveCondition(
+      BuildContext context, List<Condition<T>> conditions) {
     ResponsiveBreakpointsData responsiveBreakpointsData =
         ResponsiveBreakpoints.of(context);
     double screenWidth = responsiveBreakpointsData.screenWidth;
 
-    for (Condition condition in conditions.reversed) {
+    for (Condition<T> condition in conditions.reversed) {
       if (condition.condition == Conditional.EQUALS) {
         if (condition.name == responsiveBreakpointsData.breakpoint.name) {
           return condition;
