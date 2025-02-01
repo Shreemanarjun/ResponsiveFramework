@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 class MaxWidthBox extends StatelessWidget {
   final double? maxWidth;
+  final Widget child;
 
-  /// Control the internal Stack alignment. This widget
-  /// uses a Stack to set the widget to max width on top of
-  /// a background.
+  /// Control child alignment.
   /// Defaults to [Alignment.topCenter] because app
   /// content is usually top aligned.
   final AlignmentGeometry alignment;
-  final Widget child;
-  final Widget? background;
+  final EdgeInsets? padding;
+  final Color? backgroundColor;
 
   const MaxWidthBox(
       {super.key,
       required this.maxWidth,
       required this.child,
-      this.background,
-      this.alignment = Alignment.topCenter});
+      this.alignment = Alignment.topCenter,
+      this.padding,
+      this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +25,25 @@ class MaxWidthBox extends StatelessWidget {
 
     if (maxWidth != null) {
       if (mediaQuery.size.width > maxWidth!) {
-        mediaQuery =
-            mediaQuery.copyWith(size: Size(maxWidth!, mediaQuery.size.height));
+        mediaQuery = mediaQuery.copyWith(
+            size: Size(maxWidth! - (padding?.horizontal ?? 0),
+                mediaQuery.size.height - (padding?.vertical ?? 0)));
       }
     }
 
-    return Stack(
+    return Align(
       alignment: alignment,
-      children: [
-        background ?? const SizedBox.shrink(),
-        MediaQuery(
-            data: mediaQuery, child: SizedBox(width: maxWidth, child: child)),
-      ],
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
+        child: Container(
+          color: backgroundColor,
+          padding: padding,
+          child: MediaQuery(
+            data: mediaQuery,
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }

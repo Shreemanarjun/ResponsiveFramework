@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 
 class BouncingScrollBehavior extends ScrollBehavior {
+  const BouncingScrollBehavior();
+
   // Disable overscroll glow.
   @override
   Widget buildOverscrollIndicator(
@@ -36,19 +38,20 @@ class BouncingScrollWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
-      behavior: BouncingScrollBehavior().copyWith(
-          dragDevices: dragWithMouse
-              ? {
-                  PointerDeviceKind.touch,
-                  PointerDeviceKind.mouse,
-                }
-              : null),
+      behavior: dragWithMouse
+          ? const BouncingScrollBehavior().copyWith(dragDevices: {
+              ...const BouncingScrollBehavior().dragDevices,
+              PointerDeviceKind.mouse
+            })
+          : const BouncingScrollBehavior(),
       child: child,
     );
   }
 }
 
 class ClampingScrollBehavior extends ScrollBehavior {
+  const ClampingScrollBehavior();
+
   // Disable overscroll glow.
   @override
   Widget buildOverscrollIndicator(
@@ -78,13 +81,38 @@ class ClampingScrollWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
-      behavior: ClampingScrollBehavior().copyWith(
-          dragDevices: dragWithMouse
-              ? {
-                  PointerDeviceKind.touch,
-                  PointerDeviceKind.mouse,
-                }
-              : null),
+      behavior: dragWithMouse
+          ? const ClampingScrollBehavior().copyWith(dragDevices: {
+              ...const ClampingScrollBehavior().dragDevices,
+              PointerDeviceKind.mouse
+            })
+          : const ClampingScrollBehavior(),
+      child: child,
+    );
+  }
+}
+
+class NoScrollbarBehavior extends ScrollBehavior {
+  @override
+  Widget buildScrollbar(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
+  }
+}
+
+class NoScrollbarWrapper extends StatelessWidget {
+  final Widget child;
+
+  const NoScrollbarWrapper({super.key, required this.child});
+
+  static Widget builder(BuildContext context, Widget child) {
+    return NoScrollbarWrapper(child: child);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ScrollConfiguration(
+      behavior: NoScrollbarBehavior(),
       child: child,
     );
   }

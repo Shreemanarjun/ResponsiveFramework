@@ -98,13 +98,13 @@ Then, in your code, show the Rail based on the breakpoint condition.
 ### Responsive Framework Widgets
 The ResponsiveFramework includes a few custom widgets that supplement Flutter's responsive capabilities. Their usages are showcased in the demo projects.
 
-- *[ResponsiveValue](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/responsive_value.dart)*
-  - *[ResponsiveVisibility](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/responsive_value.dart)*
-  - *[ResponsiveConstraints](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/responsive_value.dart)*
-- *[ResponsiveRowColumn](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/responsive_row_column.dart)*
-- *[ResponsiveGridView](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/responsive_grid.dart)*
-- *[ResponsiveScaledBox](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/responsive_scaled_box.dart)*
-- *[MaxWidthBox](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/max_width_box.dart)*
+- *[ResponsiveValue](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/responsive_value.dart)*
+  - *[ResponsiveVisibility](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/responsive_value.dart)*
+  - *[ResponsiveConstraints](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/responsive_value.dart)*
+- *[ResponsiveRowColumn](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/responsive_row_column.dart)*
+- *[ResponsiveGridView](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/responsive_grid.dart)*
+- *[ResponsiveScaledBox](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/responsive_scaled_box.dart)*
+- *[MaxWidthBox](https://github.com/Codelessly/ResponsiveFramework/blob/master/lib/src/max_width_box.dart)*
 
 
 ## Legacy ReadMe (v0.2.0 and below)
@@ -255,6 +255,7 @@ Now you can proudly display the time and headache saved by using Responsive Fram
 **Development:** 
 * [Ray Li](https://github.com/searchy2)
 * [Spencer Lindemuth](https://github.com/SpencerLindemuth)
+* [Trefa1998](https://github.com/Trefa1998)
 * *add yourself here by contributing*
 
 **Sponsor:** [Codelessly - Flutter App UI and Website Builder](https://codelessly.com/?utm_medium=link&utm_campaign=direct)
@@ -288,7 +289,7 @@ Flutter is a game-changing technology that will revolutionize not just developme
 
     BSD Zero Clause License
 
-    Copyright © 2023 Codelessly
+    Copyright © 2024 Codelessly
 
     Permission to use, copy, modify, and/or distribute this software for any
     purpose with or without fee is hereby granted.
